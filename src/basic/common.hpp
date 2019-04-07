@@ -16,6 +16,9 @@ namespace cxxstu {
         Foo& operator=(const Foo &f);
         ~Foo();
 
+        Foo(Foo&& f);
+        Foo& operator=(Foo&& f);
+
         void Rename(const std::string &name);
         void PrintName();
         void Reset();
@@ -52,6 +55,24 @@ namespace cxxstu {
     Foo::~Foo()
     {
         std::cout << "This is Foo Destructor, name:" << name.c_str() << std::endl;
+    }
+
+    Foo::Foo(Foo && f)
+    {
+        this->name = f.name;
+        f.name.clear();
+        std::cout << "This is Foo Move Constructor, name:" << name.c_str() << std::endl;
+    }
+
+    Foo & Foo::operator=(Foo && f)
+    {
+        if (this != &f)
+        {
+            this->name = f.name;
+            f.name.clear();
+        }
+        std::cout << "This is Foo Move Assign Constructor, name:" << name.c_str() << std::endl;
+        return *this;
     }
 
     inline void Foo::Rename(const std::string &name)
