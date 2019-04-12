@@ -3,8 +3,6 @@
 
 using namespace cxxstu;
 
-#define PRINT_ENTER_FUNC() std::cout<< ">>>>>" << __FUNCTION__ << "<<<<<" << std::endl
-
 void PassArrayAsCStyle(Foo *foos, int count)
 {
     for (int i = 0; i < count; ++i) {

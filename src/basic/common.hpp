@@ -5,6 +5,7 @@
 
 
 #define PRINT_FUNC_LINE() std::cout << __FUNCTION__ << ":" << __LINE__ << std::endl
+#define PRINT_ENTER_FUNC() std::cout<< ">>>>>" << __FUNCTION__ << "<<<<<" << std::endl
 
 namespace cxxstu {
     class Foo
