@@ -138,6 +138,27 @@ void TestArrayByUniquePtr()
     foos[2].PrintName();
 }
 
+static std::shared_ptr<int> _GetNullSharedPtr()
+{
+    return std::shared_ptr<int>();
+}
+
+void ValidateNullSharedPtr()
+{
+    std::shared_ptr<int> sp;
+    if (!sp) {
+        std::cout << "Null shared_ptr" << std::endl;
+    } else {
+        std::cout << "Not Null shared_ptr, not expected" << std::endl;
+    }
+
+    auto sp2 = _GetNullSharedPtr();
+    if (!sp2) {
+        std::cout << "Null shared_ptr" << std::endl;
+    } else {
+        std::cout << "Not Null shared_ptr, not expected" << std::endl;
+    }
+}
 
 int main(int argc, char **argv)
 {
@@ -148,6 +169,9 @@ int main(int argc, char **argv)
     std::cout << "=====================================" << std::endl;
 
     TestArrayByUniquePtr();
+    std::cout << "=====================================" << std::endl;
+
+    ValidateNullSharedPtr();
     std::cout << "=====================================" << std::endl;
 
     getchar();
